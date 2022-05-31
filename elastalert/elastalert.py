@@ -92,6 +92,9 @@ class ElastAlerter(object):
             help='Enable logging from Elasticsearch queries as curl command. Queries will be logged to file. Note that '
                  'this will incorrectly display localhost:9200 as the host/port')
         parser.add_argument('--prometheus_port', type=int, dest='prometheus_port', help='Enables Prometheus metrics on specified port.')
+        parser.add_argument('--env', '-e', type=str, default='staging', required=False,
+                            help='env designation, staging/uat/production')
+
         self.args = parser.parse_args(args)
 
     def __init__(self, args):
@@ -99,6 +102,7 @@ class ElastAlerter(object):
         self.parse_args(args)
         self.debug = self.args.debug
         self.verbose = self.args.verbose
+        self.env = self.args['env']
 
         if self.verbose and self.debug:
             elastalert_logger.info(
