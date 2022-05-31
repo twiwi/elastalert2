@@ -11,17 +11,17 @@ class MySqlRulesLoader(RulesLoader):
     def __init__(self, conf):
         super(MySqlRulesLoader, self).__init__(conf)
         self.cache = []
-        self.db = None
         self.config = conf
-        self.table_name = self.config['mysql']['tablename']
+        self.table_name = self.config[conf['env']]['mysql']['tablename']
         self.sql = 'select id, rule_name, project, rule_content, update_time from %s' % self.table_name
         self.refresh()
 
     def refresh(self):
-        self.db = pymysql.connect(host=self.config['mysql']['host'],
-                                  user=self.config['mysql']['user'],
-                                  password=self.config['mysql']['password'],
-                                  database=self.config['mysql']['database'])
+        env = self.config['env']
+        self.db = pymysql.connect(host=self.config[env]['mysql']['host'],
+                                  user=self.config[env]['mysql']['user'],
+                                  password=self.config[env]['mysql']['password'],
+                                  database=self.config[env]['mysql']['database'])
         self.cache = []
         cursor = self.db.cursor(pymysql.cursors.DictCursor)
 

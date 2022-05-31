@@ -2,7 +2,6 @@ from elastalert.alerts import Alerter
 from elastalert.util import elastalert_logger as log
 import json
 from urllib import request
-import yaml
 
 
 class FeishuAlert(Alerter):
