@@ -57,4 +57,3 @@ class FeishuAlert(Alerter):
 
     def get_subject(self, match):
         return '告警测试-标题'
-
