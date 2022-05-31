@@ -79,7 +79,7 @@ def load_conf(args, defaults=None, overwrites=None):
     conf.setdefault('scan_subdirectories', True)
     conf.setdefault('rules_loader', 'file')
     conf.setdefault('custom_pretty_ts_format', None)
-
+    conf.setdefault('env', args.env)
     # Convert run_every, buffer_time into a timedelta object
     try:
         conf['run_every'] = datetime.timedelta(**conf['run_every'])

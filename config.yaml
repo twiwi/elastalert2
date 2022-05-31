@@ -153,4 +153,4 @@ production:
     feishuAddress: http://loan-inside-msg.pdt.mixiaojin.srv:8408/insidemsg/sendWarning
 feishu:
   receiverId: mixiaojin-rd-6
-  priority: priority
+  priority: 1

@@ -127,7 +127,6 @@ class ElastAlerter(object):
             tracer.addHandler(logging.FileHandler(self.args.es_debug_trace))
 
         self.conf = load_conf(self.args)
-        self.conf['env'] = self.env
         self.rules_loader = self.conf['rules_loader']
         self.rules = self.rules_loader.load(self.conf, self.args)
 

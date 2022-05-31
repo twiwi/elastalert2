@@ -12,7 +12,8 @@ class MySqlRulesLoader(RulesLoader):
         super(MySqlRulesLoader, self).__init__(conf)
         self.cache = []
         self.config = conf
-        self.table_name = self.config[conf['env']]['mysql']['tablename']
+        self.env = conf['env']
+        self.table_name = self.config[self.env]['mysql']['tablename']
         self.sql = 'select id, rule_name, project, rule_content, update_time from %s' % self.table_name
         self.refresh()
 
